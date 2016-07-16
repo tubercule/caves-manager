@@ -23,6 +23,17 @@ Route::get('/biblios', 'BiblioController@showBiblios');
 Route::delete('/biblio/{id}', 'BiblioController@deleteBiblio');
 
 /***********************************/
+/************ CAVE *****************/
+/***********************************/
+
+Route::resource('cave', 'CaveController',
+	['only' =>
+		['index', 'create', 'store', 'show']
+	]);
+
+Route::get('/addbibliotocave/{caveid}', 'CaveController@addBiblioForm');
+Route::post('/addbibliotocave/', 'CaveController@addBiblio');
+/***********************************/
 /************ HOME *****************/
 /***********************************/
 

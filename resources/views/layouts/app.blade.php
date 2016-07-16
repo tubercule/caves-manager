@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic,900' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <title>Cave Manager</title>
 
-    <!-- Fonts -->
+    <link rel="stylesheet" href="{{ url ('css/default.css') }}">
     <link rel="stylesheet" href="{{ url ('css/style.css') }}">
 
 </head>
@@ -17,6 +18,7 @@
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Accueil</a></li>
                     <li><a href="{{ url('/biblios') }}">Bibliographies</a></li>
+                    <li><a href="{{ url('/cave') }}">Grottes</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -34,8 +36,9 @@
         </div>
     </nav>
 
-    @yield('content')
-
+    <div class="content">
+        @yield('content')
+    </div>
     <!-- JavaScripts -->
     <script src="{{ url('js/jquery.js') }}"></script>
     <script src="{{ url('jquery-ui/jquery-ui.js') }}"></script>

@@ -2,6 +2,8 @@
 
 @section('content')
 
+<h1>Bibliographie</h1>
+
 @if (count($biblios) > 0)
 	<table>
 		<thead>
@@ -9,6 +11,7 @@
 			<th>Auteur</th>
 			<th>Revue</th>
 			<th>Date</th>
+			<th></th>
 		</thead>
 	@foreach ($biblios as $biblio)
 		<tr>
