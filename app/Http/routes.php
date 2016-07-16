@@ -1,4 +1,6 @@
 <?php
+use Illuminate\Http\Request;
+use App\Biblio;
 
 /*
 |--------------------------------------------------------------------------
@@ -11,6 +13,27 @@
 |
 */
 
+/*********************************/
+/*********** BIBLIO **************/
+/*********************************/
+
+Route::get('/biblio/{id?}', 'BiblioController@showBiblio');
+Route::post('/biblio', 'BiblioController@saveBiblio');
+Route::get('/biblios', 'BiblioController@showBiblios');
+Route::delete('/biblio/{id}', 'BiblioController@deleteBiblio');
+
+/***********************************/
+/************ HOME *****************/
+/***********************************/
+
 Route::get('/', function () {
-    return view('welcome');
+	return view('home');
 });
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::auth();
+
+Route::get('/home', 'HomeController@index');

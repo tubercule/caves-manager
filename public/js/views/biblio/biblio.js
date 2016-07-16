@@ -1,0 +1,3 @@
+  $( function() {
+    $("#biblio-date").datepicker();
+  } );
