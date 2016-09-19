@@ -16,4 +16,9 @@ class Cave extends Model
     {
     	return $this->hasMany('App\Excavation');
     }
+
+    public function periods()
+    {
+    	return $this->belongsToMany('App\Period')->withPivot('comment');
+    }
 }

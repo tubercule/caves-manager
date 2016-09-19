@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use App\Cave;
 use App\Biblio;
+use App\Cave;
+use App\Excavation;
+use App\Period;
 use Validator;
 
 class CaveController extends Controller
@@ -70,5 +72,41 @@ class CaveController extends Controller
     	//return $request->caveid.' POUET '.$request->biblioid.' POUET '.$request->comment;
     	$cave->biblios()->attach($request->biblioid, ['comment' => $request->comment]);
     	return redirect('/cave/'.$cave->id);	
+    }
+
+    public function addExcavationForm($id) {
+        $cave = Cave::find($id);
+
+        return view('cave.addexcavation', array('cave' => $cave));
+    }
+
+    public function addExcavation(Request $request) {
+        $cave = Cave::find($request->caveid);
+        $excavation = new Excavation();
+        $excavation->start_date = new \DateTime($request->startdate);
+        $excavation->end_date = new \DateTime($request->enddate);
+        $excavation->leader = $request->leader;
+        $excavation->comment = $request->comment;
+        $cave->excavations()->save($excavation);
+
+        return redirect('/cave/'.$cave->id);
+    }
+
+    public function addPeriodForm($id) {
+        $cave = Cave::find($id);
+        $periods = Period::orderBy('name', 'asc')->get();
+
+        return view('cave.addperiod', [
+            'cave' => $cave,
+            'periods' => $periods
+            ]);
+    }
+    
+
+
+    public function addPeriod(Request $request) {
+        $cave = Cave::find($request->caveid);
+        $cave->periods()->attach($request->periodid, array('comment' => $request->comment));
+        return redirect('/cave/'.$cave->id);
     }
 }

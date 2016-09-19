@@ -18,7 +18,7 @@
 	@endforeach
 	</ul>
 @endif
-
+<a href="/addexcavationtocave/{{ $cave->id }}">Ajouter une fouille</a>
 
 <h3>Biblios</h3>
 @if (count($cave->biblios) > 0) 
@@ -35,6 +35,19 @@
 	</ul>
 @endif
 <a href="/addbibliotocave/{{ $cave->id }}">Ajouter une biblio</a>
+
+<h3>Périodes</h3>
+@if (count($cave->periods) > 0)
+	<ul>
+	@foreach ($cave->periods as $period)
+		<li>
+			<p>{{ $period->name }}</p>
+		</li>
+	@endforeach
+	</ul>
+@endif
+
+<a href="/addperiodtocave/{{ $cave->id }}">Ajouter une période</a>
 </div>
 
 @endsection

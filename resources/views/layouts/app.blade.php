@@ -17,8 +17,9 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Accueil</a></li>
-                    <li><a href="{{ url('/biblios') }}">Bibliographies</a></li>
                     <li><a href="{{ url('/cave') }}">Grottes</a></li>
+                    <li><a href="{{ url('/period') }}">Périodes</a></li>
+                    <li><a href="{{ url('/biblios') }}">Bibliographies</a></li>
                 </ul>
 
                 <!-- Right Side Of Navbar -->
@@ -40,7 +41,8 @@
         @yield('content')
     </div>
     <!-- JavaScripts -->
-    <script src="{{ url('js/jquery.js') }}"></script>
+    <script src="{{ url('js/jquery.min.js') }}"></script>
     <script src="{{ url('jquery-ui/jquery-ui.js') }}"></script>
+    <script src="{{ url('js/app.js') }}"></script>
 </body>
 </html>

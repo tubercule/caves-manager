@@ -33,6 +33,22 @@ Route::resource('cave', 'CaveController',
 
 Route::get('/addbibliotocave/{caveid}', 'CaveController@addBiblioForm');
 Route::post('/addbibliotocave/', 'CaveController@addBiblio');
+
+Route::get('/addexcavationtocave/{caveid}', 'CaveController@addExcavationForm');
+Route::post('/addexcavationtocave/', 'CaveController@addExcavation');
+
+Route::get('/addperiodtocave/{caveid}', 'CaveController@addPeriodForm');
+Route::post('/addperiodtocave/', 'CaveController@addPeriod');
+
+/***********************************/
+/************ PERIOD ***************/
+/***********************************/
+Route::resource('period', 'PeriodController',
+	[ 'only' => 
+		['index', 'create', 'store', 'show']
+	]);
+
+
 /***********************************/
 /************ HOME *****************/
 /***********************************/
