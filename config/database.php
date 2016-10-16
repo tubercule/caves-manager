@@ -73,7 +73,7 @@ return [
             'port' => DBPORT,
             'database' => DBNAME,
             'username' => DBUSER,
-            'password' => DBPASSWORD,
+            'password' => DBPASS,
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
