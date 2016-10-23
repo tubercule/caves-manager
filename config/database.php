@@ -2,17 +2,17 @@
 
 
 if (isset($_SERVER['DBNAME'])) {
-    define(DBHOST, $_SERVER['DBHOSTNAME']);
-    define(DBPORT, $_SERVER['DBPORT']);
-    define(DBNAME, $_SERVER['DBNAME']);
-    define(DBUSENAME, $_SERVER['DBUSER']);
-    define(DBPASS, $_SERVER['DBPASSWORD']);
+    define('DBHOST', $_SERVER['DBHOSTNAME']);
+    define('DBPORT', $_SERVER['DBPORT']);
+    define('DBNAME', $_SERVER['DBNAME']);
+    define('DBUSER', $_SERVER['DBUSER']);
+    define('DBPASS', $_SERVER['DBPASSWORD']);
 } else {
-    define(DBHOST, env('DB_HOST', 'localhost'));
-    define(DBPORT, env('DB_PORT', '3306'));
-    define(DBNAME,  env('DB_DATABASE', 'forge'));
-    define(DBUSENAME,  env('DB_USERNAME', 'forge'));
-    define(DBPASS,  env('DB_PASSWORD', ''));
+    define('DBHOST', env('DB_HOST', 'localhost'));
+    define('DBPORT', env('DB_PORT', '3306'));
+    define('DBNAME',  env('DB_DATABASE', 'forge'));
+    define('DBUSER',  env('DB_USERNAME', 'forge'));
+    define('DBPASS',  env('DB_PASSWORD', ''));
 }
 
 return [
