@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1>Sélection la Bibliographie faisant référence à la Grotte {{$cave->name}} </h1>
+<h1>Sélection la Bibliographie faisant référence au site {{$cave->name}} </h1>
 <form action="{{ url('addbibliotocave')}}" method="POST">
 	{{ csrf_field() }}
 	<input type="hidden" name="caveid" value="{{ $cave->id }}"/>

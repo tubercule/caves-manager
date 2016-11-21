@@ -17,7 +17,7 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/home') }}">Accueil</a></li>
-                    <li><a href="{{ url('/cave') }}">Grottes</a></li>
+                    <li><a href="{{ url('/cave') }}">Sites</a></li>
                     <li><a href="{{ url('/period') }}">Périodes</a></li>
                     <li><a href="{{ url('/biblios') }}">Bibliographies</a></li>
                 </ul>

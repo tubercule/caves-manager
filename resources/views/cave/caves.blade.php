@@ -15,6 +15,6 @@
 </table>
 @endif
 <br />
-<a href="/cave/create">Nouvelle grotte</a>
+<a href="/cave/create">Nouveau site</a>
 
 @endsection
