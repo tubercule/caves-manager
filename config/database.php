@@ -10,9 +10,9 @@ if (isset($_SERVER['DBNAME'])) {
 } else {
     define('DBHOST', env('DB_HOST', 'localhost'));
     define('DBPORT', env('DB_PORT', '3306'));
-    define('DBNAME',  env('DB_DATABASE', 'forge'));
-    define('DBUSER',  env('DB_USERNAME', 'forge'));
-    define('DBPASS',  env('DB_PASSWORD', ''));
+    define('DBNAME',  env('DB_DATABASE', 'rkologie'));
+    define('DBUSER',  env('DB_USERNAME', 'rkologie'));
+    define('DBPASS',  env('DB_PASSWORD', 'rkologie'));
 }
 
 return [

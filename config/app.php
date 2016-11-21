@@ -1,7 +1,10 @@
 <?php
 
-define('APP_KEY', $_SERVER['APP_KEY']);
-
+if (isset($_SERVER['APP_KEY'])) {
+    define('APP_KEY', $_SERVER['APP_KEY']);
+} else {
+    define('APP_KEY', 'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+}
 return [
 
     /*
