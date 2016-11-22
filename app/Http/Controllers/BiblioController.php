@@ -14,6 +14,12 @@ use App\Biblio;
 
 class BiblioController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
      public function showBiblio($id = null) {
     	if (null == $id) {
     		$biblio = new Biblio();

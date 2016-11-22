@@ -13,6 +13,10 @@ use Validator;
 
 class CaveController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     
     public function index() {
     	$caves = Cave::orderBy('name', 'asc')->get();
@@ -36,15 +40,21 @@ class CaveController extends Controller
 
     	$cave = new Cave();
     	$cave->name = $request->name;
+        $cave->commune = $request->commune;
+        $cave->cadastre = $request->cadastre;
+        $cave->inv_patriache = $request->inv_patriache;
+        $cave->x_lambert = $request->x_lambert;
+        $cave->y_lambert = $request->y_lambert;
+        $cave->lattitude = $request->lattitude;
+        $cave->longitude = $request->longitude;
+        $cave->altitude = $request->altitude;
+        $cave->sequence = $request->sequence;
     	$cave->save();
     	return redirect('/cave');
     }
 
     public function show($id) {
     	$cave = Cave::find($id);
-
-
-
     	return view('cave.view', ['cave' => $cave]);
     }
 

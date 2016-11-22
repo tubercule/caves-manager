@@ -48,6 +48,14 @@ Route::resource('period', 'PeriodController',
 		['index', 'create', 'store', 'show']
 	]);
 
+/***********************************/
+/************ EXCAVATION ***************/
+/***********************************/
+Route::resource('excavation', 'ExcavationController',
+	[ 'only' => 
+		['index', 'show']
+	]);
+
 
 /***********************************/
 /************ HOME *****************/
