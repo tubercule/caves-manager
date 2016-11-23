@@ -28,7 +28,7 @@ Route::delete('/biblio/{id}', 'BiblioController@deleteBiblio');
 
 Route::resource('cave', 'CaveController',
 	['only' =>
-		['index', 'create', 'store', 'show']
+		['index', 'create', 'store', 'show', 'update', 'edit']
 	]);
 
 Route::get('/addbibliotocave/{caveid}', 'CaveController@addBiblioForm');

@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="content">
-<h1>{{ $cave->name }}</h1>
+<h1>{{ $cave->name }}</h1>(<a href="/cave/{{$cave->id}}/edit">editer</a>)
 
 <table>
 	<tr>

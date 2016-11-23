@@ -58,8 +58,9 @@ class CaveController extends Controller
     	return view('cave.view', ['cave' => $cave]);
     }
 
-    public function edit() {
-
+    public function edit($id) {
+        $cave = Cave::find($id);
+        return view('cave.cave', ['cave' => $cave]);   
     }
 
     public function destroy() {
