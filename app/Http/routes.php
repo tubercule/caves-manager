@@ -28,17 +28,20 @@ Route::delete('/biblio/{id}', 'BiblioController@deleteBiblio');
 
 Route::resource('cave', 'CaveController',
 	['only' =>
-		['index', 'create', 'store', 'show', 'update', 'edit']
+		['index', 'create', 'store', 'show', 'update', 'edit', 'destroy']
 	]);
 
 Route::get('/addbibliotocave/{caveid}', 'CaveController@addBiblioForm');
 Route::post('/addbibliotocave/', 'CaveController@addBiblio');
+Route::get('/removebiblio/{caveid}/remove/{biblioid}', 'CaveController@removeBiblio');
 
 Route::get('/addexcavationtocave/{caveid}', 'CaveController@addExcavationForm');
 Route::post('/addexcavationtocave/', 'CaveController@addExcavation');
 
 Route::get('/addperiodtocave/{caveid}', 'CaveController@addPeriodForm');
 Route::post('/addperiodtocave/', 'CaveController@addPeriod');
+Route::get('/removeperiod/{caveid}/remove/{periodid}', 'CaveController@removePeriod');
+
 
 /***********************************/
 /************ PERIOD ***************/
@@ -53,7 +56,7 @@ Route::resource('period', 'PeriodController',
 /***********************************/
 Route::resource('excavation', 'ExcavationController',
 	[ 'only' => 
-		['index', 'show']
+		['index', 'show', 'destroy'],
 	]);
 
 

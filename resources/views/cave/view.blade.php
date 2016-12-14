@@ -3,8 +3,14 @@
 @section('content')
 
 <div class="content">
-<h1>{{ $cave->name }}</h1>(<a href="/cave/{{$cave->id}}/edit">editer</a>)
-
+<h1>{{ $cave->name }}</h1>
+{{ Form::open(['url' => '/cave/' . $cave->id . '/edit', 'method' => 'get'])}}
+	{{ Form::submit('Modifier', ['class' => 'btn btn-danger']) }}
+{{ Form::close() }}
+{{ Form::open(['method' => 'delete']) }}
+    {{ Form::hidden('id', $cave->id) }}
+    {{ Form::submit('Supprimer', ['class' => 'btn btn-danger']) }}
+{{ Form::close() }}
 <table>
 	<tr>
 		<td>
@@ -51,7 +57,7 @@
 			Longitude
 		</td>
 		<td>
-			{{ $cave->longitude }}
+			{{ $cave->getLongitudeAsString() }}
 		</td>
 	</tr>
 	<tr>
@@ -59,7 +65,7 @@
 			Lattitude
 		</td>
 		<td>
-			{{ $cave->lattitude }}
+			{{ $cave->getLattitudeAsString() }}
 		</td>
 	</tr>
 	<tr>
@@ -103,6 +109,8 @@
 		<p>
 			{{ $biblio->pivot->comment }}
 		</p>
+		<a href="/removebiblio/{{ $cave->id }}/remove/{{ $biblio->id}}">Dissocier la bilbio</a>
+		<br /><br />
 	</li>
 	@endforeach
 	</ul>
@@ -115,6 +123,7 @@
 	@foreach ($cave->periods as $period)
 		<li>
 			<p>{{ $period->name }}</p>
+			<a href="/removeperiod/{{ $cave->id }}/remove/{{ $period->id }}">Dissocier la période</a>
 		</li>
 	@endforeach
 	</ul>

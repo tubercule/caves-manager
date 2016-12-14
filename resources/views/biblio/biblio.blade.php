@@ -16,8 +16,8 @@
 	<label>Revue</label>
 	<input type="text" name="revu" id="biblio-revu" value="{{ $biblio->revu }}"/>
 
-	<label>Date</label>
-	<input type="text" name="date" id="biblio-date" value="{{ $biblio->date }}" class="datepicker"/>
+	<label>Année de parution</label>
+	<input type="text" name="date" id="biblio-date" value="{{ $biblio->date }}"/>
 	<button type="submit">
 	Ajouter Biblio
 	</button>

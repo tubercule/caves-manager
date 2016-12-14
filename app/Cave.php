@@ -21,4 +21,22 @@ class Cave extends Model
     {
     	return $this->belongsToMany('App\Period')->withPivot('comment');
     }
+
+    public function getLattitudeAsString()
+    {
+        $label = $this->lattitude_deg . '° ';
+        $label .= $this->lattitude_min . "' ";
+        $label .= $this->lattitude_sec . '" ';
+        $label .= '(' . $this->lattitude_hem . ')';
+        return $label;
+    }
+
+        public function getLongitudeAsString()
+    {
+        $label = $this->longitude_deg . '° ';
+        $label .= $this->longitude_min . "' ";
+        $label .= $this->longitude_sec . '" ';
+        $label .= '(' . $this->longitude_hem . ')';
+        return $label;
+    }
 }

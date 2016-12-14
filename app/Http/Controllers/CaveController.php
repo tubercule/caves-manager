@@ -45,8 +45,14 @@ class CaveController extends Controller
         $cave->inv_patriache = $request->inv_patriache;
         $cave->x_lambert = $request->x_lambert;
         $cave->y_lambert = $request->y_lambert;
-        $cave->lattitude = $request->lattitude;
-        $cave->longitude = $request->longitude;
+        $cave->longitude_hem = $request->longitude_hemi;
+        $cave->longitude_deg = $request->longitude_deg;
+        $cave->longitude_min = $request->longitude_min;
+        $cave->longitude_sec = $request->longitude_sec;
+        $cave->lattitude_hem = $request->lattitude_hemi;
+        $cave->lattitude_deg = $request->lattitude_deg;
+        $cave->lattitude_min = $request->lattitude_min;
+        $cave->lattitude_sec = $request->lattitude_sec;
         $cave->altitude = $request->altitude;
         $cave->sequence = $request->sequence;
     	$cave->save();
@@ -63,8 +69,35 @@ class CaveController extends Controller
         return view('cave.cave', ['cave' => $cave]);   
     }
 
-    public function destroy() {
+    public function update(Request $request, $id) {
+        $cave = Cave::find($id);
+        $cave->name = $request->name;
+        $cave->commune = $request->commune;
+        $cave->cadastre = $request->cadastre;
+        $cave->inv_patriache = $request->inv_patriache;
+        $cave->x_lambert = $request->x_lambert;
+        $cave->y_lambert = $request->y_lambert;
+        $cave->longitude_hem = $request->longitude_hemi;
+        $cave->longitude_deg = $request->longitude_deg;
+        $cave->longitude_min = $request->longitude_min;
+        $cave->longitude_sec = $request->longitude_sec;
+        $cave->lattitude_hem = $request->lattitude_hemi;
+        $cave->lattitude_deg = $request->lattitude_deg;
+        $cave->lattitude_min = $request->lattitude_min;
+        $cave->lattitude_sec = $request->lattitude_sec;
+        $cave->altitude = $request->altitude;
+        $cave->sequence = $request->sequence;
+        $cave->save();
+        return redirect('/cave');
+    }
 
+    public function destroy($id) {
+        $cave = Cave::find($id);
+        $cave->biblios()->detach();
+        $cave->excavations()->delete();
+        $cave->periods()->detach();
+        $cave->delete();
+        return redirect('/cave');
     }
 
     public function addBiblioForm($id) {
@@ -85,6 +118,13 @@ class CaveController extends Controller
     	return redirect('/cave/'.$cave->id);	
     }
 
+    public function removeBiblio($caveId, $biblioId)
+    {
+        $cave = Cave::find($caveId);
+        $cave->biblios()->detach($biblioId);
+        return redirect('/cave/'.$cave->id);
+    }
+
     public function addExcavationForm($id) {
         $cave = Cave::find($id);
 
@@ -94,8 +134,8 @@ class CaveController extends Controller
     public function addExcavation(Request $request) {
         $cave = Cave::find($request->caveid);
         $excavation = new Excavation();
-        $excavation->start_date = new \DateTime($request->startdate);
-        $excavation->end_date = new \DateTime($request->enddate);
+        $excavation->start_date = $request->startdate;
+        $excavation->end_date = $request->enddate;
         $excavation->leader = $request->leader;
         $excavation->comment = $request->comment;
         $cave->excavations()->save($excavation);
@@ -118,6 +158,12 @@ class CaveController extends Controller
     public function addPeriod(Request $request) {
         $cave = Cave::find($request->caveid);
         $cave->periods()->attach($request->periodid, array('comment' => $request->comment));
+        return redirect('/cave/'.$cave->id);
+    }
+
+    public function removePeriod($caveId, $periodId) {
+         $cave = Cave::find($caveId);
+         $cave->periods()->detach($periodId);
         return redirect('/cave/'.$cave->id);
     }
 }

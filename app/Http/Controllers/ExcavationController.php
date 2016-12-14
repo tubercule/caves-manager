@@ -24,4 +24,12 @@ class ExcavationController extends Controller
     	$exca = Excavation::find($id);
     	return view('excavation.view', ['excavation' => $exca]);
 	}
+
+	public function destroy($id) {
+		$exca = Excavation::find($id);
+		$caveId = $exca->cave->id;
+		//$exca->cave()->detach();
+		$exca->delete();
+		return redirect('/cave/' . $caveId);
+	}
 }
