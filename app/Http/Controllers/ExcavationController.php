@@ -32,4 +32,18 @@ class ExcavationController extends Controller
 		$exca->delete();
 		return redirect('/cave/' . $caveId);
 	}
+
+	public function edit($id) {
+		$exca = Excavation::find($id);
+		return view('excavation.edit', ['excavation' => $exca]);
+	}
+
+	public function update(Request $request, $id) {
+		$exca = Excavation::find($id);
+		$exca->leader = $request->leader;
+		$exca->start_date = $request->start_date;
+		$exca->comment = $request->comment;
+		$exca->save();
+		return redirect('/cave/' . $exca->cave->id);
+	}
 }

@@ -34,6 +34,8 @@ Route::resource('cave', 'CaveController',
 Route::get('/addbibliotocave/{caveid}', 'CaveController@addBiblioForm');
 Route::post('/addbibliotocave/', 'CaveController@addBiblio');
 Route::get('/removebiblio/{caveid}/remove/{biblioid}', 'CaveController@removeBiblio');
+Route::get('/cavebiblio/{caveid}/edit/{biblioid}', 'CaveController@editBiblio');
+Route::post('/cave/{caveid}/edit/{biblioid}', 'CaveController@updateBiblio');
 
 Route::get('/addexcavationtocave/{caveid}', 'CaveController@addExcavationForm');
 Route::post('/addexcavationtocave/', 'CaveController@addExcavation');
@@ -48,7 +50,7 @@ Route::get('/removeperiod/{caveid}/remove/{periodid}', 'CaveController@removePer
 /***********************************/
 Route::resource('period', 'PeriodController',
 	[ 'only' => 
-		['index', 'create', 'store', 'show']
+		['index', 'create', 'store', 'show', 'update', 'edit', 'destroy']
 	]);
 
 /***********************************/
@@ -56,7 +58,7 @@ Route::resource('period', 'PeriodController',
 /***********************************/
 Route::resource('excavation', 'ExcavationController',
 	[ 'only' => 
-		['index', 'show', 'destroy'],
+		['index', 'show', 'destroy', 'update', 'edit'],
 	]);
 
 
@@ -75,3 +77,7 @@ Route::get('/home', 'HomeController@index');
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+
+Route::resource('auth','\App\Http\Controllers\Auth\AuthController');
+Route::resource('password', '\App\Http\Controllers\Auth\PasswordController');

@@ -19,7 +19,7 @@
 	<label>Année de parution</label>
 	<input type="text" name="date" id="biblio-date" value="{{ $biblio->date }}"/>
 	<button type="submit">
-	Ajouter Biblio
+	Enregistrer
 	</button>
 
 </form>

@@ -92,7 +92,9 @@
 	@foreach ($cave->excavations as $excavation)
 		<li>
 		<a href="/excavation/{{ $excavation->id }}"> {{ $excavation->start_date }} par {{ $excavation->leader }}</a>
-		
+		<br />
+		{{ $excavation->comment }}
+		<br /><br />
 		</li>
 	@endforeach
 	</ul>
@@ -110,6 +112,8 @@
 			{{ $biblio->pivot->comment }}
 		</p>
 		<a href="/removebiblio/{{ $cave->id }}/remove/{{ $biblio->id}}">Dissocier la bilbio</a>
+		<br />
+		<a href="/cavebiblio/{{ $cave->id }}/edit/{{ $biblio->id}}">Editer le commentaire</a>
 		<br /><br />
 	</li>
 	@endforeach

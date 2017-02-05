@@ -18,17 +18,34 @@ class PeriodController extends Controller
     	$periods = Period::orderBy('name', 'asc')->get();
 
     	return view('period.periods')->with('periods', $periods);
-   }
+    }
 
-   public function create() {
-   		return view('period.period')->with('period', new Period());
-   }
+    public function create() {
+        return view('period.period')->with('period', new Period());
+    }
 
-   public function store(Request $request) {
-   		$period = new Period();
-   		$period->name = $request->name;
-   		$period->save();
+    public function store(Request $request) {
+        $period = new Period();
+        $period->name = $request->name;
+        $period->save();
+        return redirect('/period');
+    }
 
-   		return redirect('/period');
-   }
+    public function show($id) {
+        $period = Period::find($id);
+        return view('period.period', ['period' => $period]);
+    }
+
+    public function update(Request $request, $id) {
+        $period = Period::find($id);
+        $period->name = $request->name;
+        $period->save();
+        return redirect('/period');
+    }
+
+    public function destroy($id) {
+        $period = Period::find($id);
+        $period->delete();
+        return redirect('/period');   
+    }
 }

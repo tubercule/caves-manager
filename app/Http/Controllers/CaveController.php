@@ -125,6 +125,24 @@ class CaveController extends Controller
         return redirect('/cave/'.$cave->id);
     }
 
+    public function editBiblio($caveId, $biblioId) {
+        $cave = Cave::find($caveId);
+        $biblio = $cave->biblios->find($biblioId);
+        return view('cave.editbiblio',
+            [
+            'cave' => $cave,
+            'biblio' => $biblio
+            ]);
+    }
+
+    public function updateBiblio($caveId, $biblioId, Request $request) {
+        $cave = Cave::find($caveId);
+        $pivot = $cave->biblios->find($biblioId)->pivot;
+        $pivot->comment = $request->comment;
+        $pivot->save();
+        return redirect('/cave/'.$cave->id);
+    }
+
     public function addExcavationForm($id) {
         $cave = Cave::find($id);
 

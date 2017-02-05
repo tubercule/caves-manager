@@ -2,14 +2,21 @@
 
 @section('content')
 
-	<form action="{{ url('period') }}" method="POST">
-	{{ csrf_field() }}
+<?php
 
-	<label>Nom de la période</label>
-	<input type="text" name="name" id="period-name" value="{{ $period->name }}"/>
+if ($period->id) {
+	echo Form::open(['route' => ['period.update', $period], 'method' => 'PUT']);
+} else {
+	echo Form::open(['url' => '/period', 'method' => 'POST']);
+}
 
-	<button type="submit">
-	Enregistrer
-	</button>
-	</form>
+echo Form::label('name', 'Nom de la période');
+echo Form::text('name', $period->name);
+echo '<br />';
+
+echo Form::submit('Enregistrer', ['class' => 'btn btn-danger']);
+
+echo Form::close();
+?>
+
 @endsection

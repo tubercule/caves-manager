@@ -45,8 +45,7 @@ class BiblioController extends Controller
 		$biblio->title = $request->title;
 		$biblio->author = $request->author;
 		$biblio->revu = $request->revu;
-		$date = new \DateTime($request->date);
-		$biblio->date = $date;
+		$biblio->date = $request->date;
 		$biblio->save();
 
 		return redirect('/biblios');
